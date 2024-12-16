@@ -1,19 +1,23 @@
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-class Config(object):
+class Config:
 	"""
 	Configuration base, for all environments.
 	"""
 	DEBUG = False
 	TESTING = False
-	# SQLALCHEMY_DATABASE_URI = 'sqlite:///application.db'
-	# BOOTSTRAP_FONTAWESOME = True
-	# SECRET_KEY = "MINHACHAVESECRETA"
-	# CSRF_ENABLED = True
-	# SQLALCHEMY_TRACK_MODIFICATIONS = True
+	API_URL = os.getenv("API_URL")
+	VACANCY_ENDPOINT = f"{API_URL}/vacancy"
+	VACANCY_REQUEST_ENDPOINT = f"{API_URL}/vacancy-request"
+
+	IMAGES_SAVE = "images"
+	VIDEOS_SAVE = "videos"
+	UPLOADS_FOLDER_ABSOLUTE = "frontend/app/uploads"
+	UPLOADS_FOLDER_RELATIVE = "uploads"
 
 class ProductionConfig(Config):
-	# SQLALCHEMY_DATABASE_URI = 'mysql://user@localhost/foo'
-	# SQLALCHEMY_TRACK_MODIFICATIONS = False
 	...
 
 class DevelopmentConfig(Config):

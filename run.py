@@ -2,11 +2,11 @@ import subprocess
 
 def start_backend():
     print("Starting FastAPI backend...")
-    subprocess.Popen(["uvicorn", "backend.main:app", "--host", "127.0.0.1", "--port", "8000", "--reload"])
+    subprocess.Popen(["python", "backend/app.py"], shell=True)
 
 def start_frontend():
     print("Starting Flask frontend...")
-    subprocess.Popen(["python", "frontend/app/app.py"], shell=True)
+    subprocess.Popen(["python", "frontend/app.py"], shell=True)
 
 if __name__ == "__main__":
     start_backend()

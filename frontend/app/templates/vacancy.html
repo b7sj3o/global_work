@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% block content %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/vacancy.min.css') }}">
+{% endblock %}
+
+<div class="vacancy">
+    <div class="vacancy-details">
+        <a href="{{ url_for('base.home' ) }}" class="vacancy-back">← Повернутися до вакансій</a>
+        <div class="vacancy-image"><img src="{{vacancy.main_image_path}}" alt=""></div>
+        <div class="vacancy-title">{{ vacancy.title }}</div>
+        <div class="vacancy-description">{{ vacancy.description | safe }}</div>
+
+        <hr>
+        <h3>Фото житла</h3>
+        <p>*(варіант житла на одному з заїздів під дану вакансію, фото отримано від клієнтів нашої компанії)</p>
+        <div class="vacancy-images">
+            {% for img_path in vacancy.images_path %}
+                <img src="{{ img_path }}" alt="">
+            {% endfor %}
+        </div>
+        
+        {% if vacancy.video_path %}
+        <div class="vacancy-video">
+            <video src="{{ vacancy.video_path }}" controls></video>
+        </div>
+        {% endif %}
+    </div>
+    <div class="vacancy-form">
+        <h4>Заявка на вакансію</h4>
+        <form method="post">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.name.label() }}
+                {{ form.name(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.phone_number.label() }}
+                {{ form.phone_number(class="form-control") }}
+            </div>
+            {{ form.submit(class="btn btn-success") }}
+        </form>
+    </div>
+</div>
+
+{% endblock %}

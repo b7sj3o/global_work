@@ -1,0 +1,120 @@
+@import "./variables.scss";
+
+// Заголовки секцій
+.section-title {
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section-description {
+    font-size: 16px;
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+// 1. Короткий опис про нас
+.about-us {
+    background-color: $light-gray;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    border: 1px solid #000000;
+    
+    padding: 40px 20px;
+
+    .section-description {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+}
+
+// 2. Наші переваги
+.advantages {
+    margin: 40px 0;
+
+    .advantages-list {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+
+        .advantage-item {
+            background-color: $light-gray;
+            border: 1px solid #000000;
+            border-radius: 8px;
+            text-align: center;
+            padding: 20px;
+            flex: 1;
+
+            .advantage-number {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 50px;
+                height: 50px;
+                background-color: $blue;
+                color: #ffffff;
+                font-size: 24px;
+                font-weight: bold;
+                border-radius: 50%;
+                margin: 0 auto 15px;
+            }
+
+            .advantage-title {
+                font-size: 20px;
+                font-weight: bold;
+                margin-bottom: 10px;
+                background-color: $blue;
+
+            }
+
+            .advantage-description {
+                font-size: 14px;
+                line-height: 1.4;
+            }
+        }
+    }
+}
+
+// 3. Документи
+.documents {
+    background-color: $light-gray;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    border: 1px solid #000000;
+    
+    padding: 40px 20px;
+
+    .document-list {
+        max-width: 800px;
+        margin: 0 auto;
+
+        ul {
+            list-style: none;
+            padding: 0;
+
+            li {
+                margin-bottom: 10px;
+                font-size: 16px;
+
+                &::before {
+                    content: "•";
+                    color: $blue;
+                    font-weight: bold;
+                    display: inline-block;
+                    width: 1em;
+                    margin-left: -1em;
+                }
+            }
+        }
+    }
+
+    .important-note {
+        margin-top: 20px;
+        font-size: 14px;
+        font-style: italic;
+        color: gray;
+        text-align: center;
+    }
+}

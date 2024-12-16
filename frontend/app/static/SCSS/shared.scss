@@ -1,0 +1,126 @@
+@import "./variables.scss";
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 20px;
+
+    &__logo {
+        display: flex;
+        align-items: center;
+        width: 50%;
+
+        img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+
+        &-title {
+            margin: 0;
+            font-size: 30px;
+            font-weight: 600;
+        }
+
+        &-subtitle {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 500;
+        }
+    }
+
+    &__lang-switch {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+        width: 25%;
+    }
+
+    &__contacts {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 25%;
+    }
+
+    &__phone {
+        font-size: 16px;
+        font-weight: bold;
+        color: #000000;
+        text-decoration: none;
+    }
+}
+
+.menu {
+    background-color: #ffffff;
+    padding: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 1px solid #00000044;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 50%;
+
+    &__list {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin: 0;
+    }
+    &__item {
+        display: inline-block;
+
+        a {
+            display: block;
+            padding: 10px 15px;
+            border-radius: 10px;
+            color: $blue;
+            transition: all 0.3s;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $blue;
+                color: #ffffff;
+            }
+        }
+
+        
+    }
+}
+
+// TRANSLATIONS
+.gtranslate_wrapper {
+    padding: 20px;
+    border: 1px solid $blue;
+    border-radius: 20px;
+}
+
+.glink {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    cursor: pointer;
+    margin-right: 5px;
+    font-size: 14px;
+    color: #333;
+
+    &:hover {
+        background: #e7e7e7;
+    }
+}
+
+.gt-current-lang {
+    background: $blue;
+    color: #fff;
+    border-color: $blue;
+}
