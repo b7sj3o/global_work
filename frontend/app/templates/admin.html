@@ -1,7 +1,42 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/admin.min.css') }}" />
+{% endblock %} {% block content %}
 
-{% block content %}
+<div class="toggle-archieved">
+    <form method="GET" action="{{ url_for('admin.admin') }}">
+        <input type="hidden" name="show_archieved" value="{{ not show_archieved }}" />
+        <button type="submit" class="toggle-button">
+            {% if show_archieved %} Сховати архівовані заявки 
+            {% else %} Показати архівовані заявки
+            {% endif %}
+        </button>
+    </form>
+</div>
 
-
+<div class="requests">
+    {% for request in vacancy_requests %}
+    <div class="request {% if request.archieved %}archived{% endif %}">
+        <div class="request__name">Ім'я: {{ request.name }}</div>
+        <div class="request__phone-number">Номер телефону: {{ request.phone_number }}</div>
+        <div class="request__link">
+            <a href="{{ url_for('vacancy.get_vacancy', vacancy_id=request.vacancy_id ) }}">Посилання на вакансію</a>
+        </div>
+        <div class="request__actions">
+            <form method="POST" action="{{ url_for('vacancy.delete_request', request_id=request.id) }}">
+                <button type="submit" class="request__delete-button">Видалити</button>
+            </form>
+            <form method="POST" action="{{ url_for('vacancy.archieve_request', request_id=request.id) }}">
+                <button type="submit" class="request__archieve-button">
+                    {% if request.archieved %}
+                        Розархівувати
+                    {% else %}
+                        Архівувати
+                    {% endif %}
+                </button>
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 
 {% endblock %}

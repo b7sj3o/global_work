@@ -1,8 +1,7 @@
-from flask import Blueprint
-from werkzeug.utils import secure_filename
+from flask import Blueprint, Config, current_app
 from werkzeug.datastructures import FileStorage
 import os
-from config import Config
+# from config import Config
 
 
 def create_blueprint(name: str, url_prefix: str) -> Blueprint:
@@ -17,11 +16,11 @@ def create_blueprint(name: str, url_prefix: str) -> Blueprint:
 
 def save_file(file: FileStorage, folder: str) -> str:
     # Generate absolute path for image
-    uploads_folder = os.path.join(Config.UPLOADS_FOLDER_ABSOLUTE, folder)
+    uploads_folder = os.path.join(current_app.config["UPLOADS_FOLDER_ABSOLUTE"], folder)
     if not os.path.exists(uploads_folder):
         os.makedirs(uploads_folder)
 
-    filename = secure_filename(file.filename)
+    filename = file.filename
     file_path = os.path.join(uploads_folder, filename)
 
     file.save(file_path)

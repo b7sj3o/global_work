@@ -1,18 +1,21 @@
 from fastapi import APIRouter, HTTPException, status
 from ..db import Session
 from ..db.models import VacancyRequest
-from ..schemas.vacancy import VacandyRequestData
+from ..schemas import VacandyRequestData
 
 router = APIRouter(prefix="/vacancy-request", tags=["vacancy-request"])
 
 
 @router.get("/list")
-def list_vacancy():
+def list_vacancy(show_archieved: bool = False):
     with Session() as session:
-        return session.query(VacancyRequest).all()
+        if show_archieved:
+            return session.query(VacancyRequest).all()
+        else:
+            return session.query(VacancyRequest).filter_by(archieved=False).all()
 
 
-@router.get("/get")
+@router.get("/get/{request_id}")
 def get_vacancy_request(request_id: int):
     with Session() as session:
         vacancy_request = session.query(VacancyRequest).filter_by(id=request_id).first()
@@ -23,15 +26,15 @@ def get_vacancy_request(request_id: int):
         return vacancy_request
 
 
-@router.patch("/flip-status")
-def flip_vacancy_request_status(request_id: int):
+@router.patch("/archieve/{request_id}")
+def archieve_vacancy_request(request_id: int):
     with Session() as session:
         vacancy_request = session.query(VacancyRequest).filter_by(id=request_id).first()
 
         if not vacancy_request:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Vacancy request is not found")
 
-        vacancy_request.checked = not vacancy_request.checked
+        vacancy_request.archieved = not vacancy_request.archieved
 
         session.add(vacancy_request)
         session.commit()
@@ -40,7 +43,7 @@ def flip_vacancy_request_status(request_id: int):
         return {"message": "Success!"}
 
 
-@router.delete("/delete")
+@router.delete("/delete/{request_id}", status_code=status.HTTP_204_NO_CONTENT)
 def delete_vacancy_request(request_id: int):
     with Session() as session:
         vacancy_request = session.query(VacancyRequest).filter_by(id=request_id).first()

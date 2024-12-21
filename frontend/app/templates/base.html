@@ -17,8 +17,6 @@
         
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        <script>window.gtranslateSettings = {"default_language":"uk","native_language_names":true,"detect_browser_language":true,"languages":["uk","ru"],"wrapper_selector":".gtranslate_wrapper"}</script>
-        <script src="https://cdn.gtranslate.net/widgets/latest/lc.js" defer></script>
 
         <title>{% block title %}{% endblock %}</title>
     </head>
@@ -49,7 +47,8 @@
                     </div>
                 </div>
                 <div class="header__lang-switch">
-                    <div class="gtranslate_wrapper"></div>
+                    <div class="header__lang-btn active">UA</div>
+                    <div class="header__lang-btn">RU</div>
                 </div>
                 <div class="header__contacts">
                     <a href="tel:+380633339078" class="header__phone">+380633339078</a>
@@ -59,8 +58,8 @@
                 <ul class="menu__list">
                     <li class="menu__item"><a href="{{ url_for('base.home' ) }}">Головна</a></li>
                     <li class="menu__item"><a href="{{ url_for('base.about_us' ) }}">Про нас</a></li>
-                    <li class="menu__item"><a href="#">Відгуки</a></li>
-                    <li class="menu__item"><a href="#">Контакти</a></li>
+                    <li class="menu__item"><a href="{{ url_for('base.reviews' ) }}">Відгуки</a></li>
+                    <li class="menu__item"><a href="{{ url_for('base.contacts' ) }}">Контакти</a></li>
                     <li class="menu__item"><a href="{{ url_for('admin.admin' ) }}">Адмін-панель</a></li>
                 </ul>
             </nav>

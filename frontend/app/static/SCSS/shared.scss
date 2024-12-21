@@ -36,11 +36,35 @@
         }
     }
 
-    &__lang-switch {
-        display: flex;
-        align-items: center;
-        margin-right: 20px;
-        width: 25%;
+    &__lang {
+        &-switch {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            padding: 20px;
+            border: 1px solid $blue;
+            border-radius: 20px;
+        }
+        &-btn {
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background: #fff;
+            cursor: pointer;
+            margin-right: 5px;
+            font-size: 14px;
+            color: #333;
+
+            &:hover {
+                background: #e7e7e7;
+            }
+
+            &.active {
+                background: $blue;
+                color: #fff;
+                border-color: $blue;
+            }
+        }
     }
 
     &__contacts {
@@ -95,32 +119,4 @@
 
         
     }
-}
-
-// TRANSLATIONS
-.gtranslate_wrapper {
-    padding: 20px;
-    border: 1px solid $blue;
-    border-radius: 20px;
-}
-
-.glink {
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background: #fff;
-    cursor: pointer;
-    margin-right: 5px;
-    font-size: 14px;
-    color: #333;
-
-    &:hover {
-        background: #e7e7e7;
-    }
-}
-
-.gt-current-lang {
-    background: $blue;
-    color: #fff;
-    border-color: $blue;
 }

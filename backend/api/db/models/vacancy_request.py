@@ -13,7 +13,7 @@ class VacancyRequest(Base):
     name: Mapped[str] = mapped_column(nullable=False)
     phone_number: Mapped[str] = mapped_column(nullable=False)
 
-    checked: Mapped[bool] = mapped_column(default=False)
+    archieved: Mapped[bool] = mapped_column(default=False)
 
     def __repr__(self):
         return (
