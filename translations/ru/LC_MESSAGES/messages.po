@@ -1,0 +1,441 @@
+# Russian translations for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-12-21 23:17+0200\n"
+"PO-Revision-Date: 2024-12-21 21:40+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ru\n"
+"Language-Team: ru <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: frontend/app/routes/home.py:46
+msgid "Ви вже зареєстровані"
+msgstr "Вы уже зарегистрированы"
+
+#: frontend/app/routes/home.py:63
+msgid "Ви успішно ввійшли в акаунт!"
+msgstr "Вы успешно вошли в аккаунт!"
+
+#: frontend/app/routes/home.py:75
+msgid "Трапилася помилка!"
+msgstr "Произошла ошибка!"
+
+#: frontend/app/routes/vacancy.py:27
+msgid "Ви успішно надіслали заявку!"
+msgstr "Вы успешно отправили заявку!"
+
+#: frontend/app/routes/vacancy.py:30
+msgid "Ваша заявка вже подана для цієї вакансії"
+msgstr "Ваша заявка уже подана для этой вакансии"
+
+#: frontend/app/routes/vacancy.py:32
+msgid "Сталася помилка, зверніться в підтримку, якщо вважаєте, що це баг"
+msgstr "Произошла ошибка, обратитесь в поддержку, если считаете, что это баг"
+
+#: frontend/app/routes/vacancy.py:34
+msgid "Помилка при відправці заявки: "
+msgstr "Ошибка при отправке заявки: "
+
+#: frontend/app/routes/vacancy.py:43
+msgid "Вакансію не знайдено"
+msgstr "Вакансия не найдена"
+
+#: frontend/app/routes/vacancy.py:92
+msgid "Вакансію створено успішно!"
+msgstr "Вакансия успешно создана!"
+
+#: frontend/app/routes/vacancy.py:95
+msgid "Помилка при створенні вакансії"
+msgstr "Ошибка при создании вакансии"
+
+#: frontend/app/routes/vacancy.py:110
+msgid "Вакансію успішно видалено!"
+msgstr "Вакансия успешно удалена!"
+
+#: frontend/app/routes/vacancy.py:112
+msgid "Не вдалося видалити вакансію."
+msgstr "Не удалось удалить вакансию."
+
+#: frontend/app/routes/vacancy.py:121
+msgid "Заявку успішно видалено!"
+msgstr "Заявка успешно удалена!"
+
+#: frontend/app/routes/vacancy.py:123
+msgid "Не вдалося видалити заявку."
+msgstr "Не удалось удалить заявку."
+
+#: frontend/app/routes/vacancy.py:133
+msgid "Заявку успішно (роз)архівовано!"
+msgstr "Заявка успешно (раз)архивирована!"
+
+#: frontend/app/routes/vacancy.py:135
+msgid "Не вдалося архівовувати заявку."
+msgstr "Не удалось архивировать заявку."
+
+
+#: frontend/app/templates/about-us.html:10 frontend/app/templates/base.html:61
+msgid "Про нас"
+msgstr "О нас"
+
+#: frontend/app/templates/about-us.html:12
+msgid ""
+"Ми міжнародна кадрова агенція, яка була заснована в місті Брно. Агенція "
+"діє по всій території Чеської Республіки. \n"
+"        Наша агенція володіє всіми необхідними дозволами ГУМТ Чеської "
+"Республіки, відповідає всім легіслативним вимогам, \n"
+"        насамперед заставу та страхування. На даний момент через нашу "
+"агенцію працевлаштувалось понад тисячу працівників, \n"
+"        і ми продовжуємо допомагати з працевлаштуванням всім бажаючим."
+msgstr ""
+"Мы международное кадровое агентство, основанное в городе Брно. Агентство "
+"действует на всей территории Чешской Республики. \n"
+"        Наше агентство обладает всеми необходимыми разрешениями МВД "
+"Чешской Республики, соответствует всем законодательным требованиям, \n"
+"        в первую очередь залогу и страховке. На данный момент через наше "
+"агентство трудоустроились более тысячи сотрудников, \n"
+"        и мы продолжаем помогать с трудоустройством всем желающим."
+
+#: frontend/app/templates/about-us.html:21
+msgid "Наші переваги"
+msgstr "Наши преимущества"
+
+#: frontend/app/templates/about-us.html:26
+msgid "Офіційне працевлаштування"
+msgstr "Официальное трудоустройство"
+
+#: frontend/app/templates/about-us.html:27
+msgid "Ми забезпечуємо офіційне оформлення всіх документів із трудовим договором."
+msgstr ""
+"Мы обеспечиваем официальное оформление всех документов с трудовым "
+"договором."
+
+#: frontend/app/templates/about-us.html:32
+msgid "Супровід на всіх етапах"
+msgstr "Сопровождение на всех этапах"
+
+#: frontend/app/templates/about-us.html:33
+msgid "Надаємо повну підтримку від оформлення документів до виходу на роботу."
+msgstr ""
+"Мы предоставляем полную поддержку от оформления документов до выхода на "
+"работу."
+
+#: frontend/app/templates/about-us.html:38
+msgid "Безстресовий переїзд"
+msgstr "Безстрессовый переезд"
+
+#: frontend/app/templates/about-us.html:39
+msgid ""
+"Наш представник зустріне вас по приєзду, заселить і проведе на робоче "
+"місце."
+msgstr ""
+"Наш представитель встретит вас по прибытии, поселит и проводит на рабочее"
+" место."
+
+#: frontend/app/templates/about-us.html:46
+msgid "Документи"
+msgstr "Документы"
+
+#: frontend/app/templates/about-us.html:47
+msgid "Як українцю отримати візу захисту у Чехії?"
+msgstr "Как украинцу получить визу защиты в Чехии?"
+
+#: frontend/app/templates/about-us.html:49
+msgid ""
+"В’їхати на територію Чехії українці можуть на підставі будь-якого "
+"наявного документу."
+msgstr ""
+"Въехать на территорию Чехии украинцы могут на основании любого имеющегося"
+" документа."
+
+#: frontend/app/templates/about-us.html:50
+msgid ""
+"Упродовж 3 днів після приїзду громадяни України повинні звернутись до "
+"Департаменту з питань притулку та міграційної політики або Регіонального "
+"центру допомоги українцям."
+msgstr ""
+"В течение 3 дней после прибытия граждане Украины должны обратиться в "
+"Департамент по вопросам убежища и миграционной политики или в "
+"Региональный центр помощи украинцам."
+
+#: frontend/app/templates/about-us.html:51
+msgid "Що потрібно для оформлення тимчасового захисту:"
+msgstr "Что нужно для оформления временной защиты:"
+
+#: frontend/app/templates/about-us.html:53
+msgid "Дійсний закордонний біометричний паспорт."
+msgstr "Действительный заграничный биометрический паспорт."
+
+#: frontend/app/templates/about-us.html:54
+msgid "Підтвердження перебування в Україні до 24 лютого 2022 року."
+msgstr "Подтверждение пребывания в Украине до 24 февраля 2022 года."
+
+#: frontend/app/templates/about-us.html:55
+msgid "Документ про надання житла."
+msgstr "Документ о предоставлении жилья."
+
+#: frontend/app/templates/about-us.html:59
+msgid ""
+"✔ Оформити статус тимчасового захисту можна на основі будь-якого "
+"документа, що посвідчує особу."
+msgstr ""
+"✔ Оформить статус временной защиты можно на основании любого документа, "
+"удостоверяющего личность."
+
+#: frontend/app/templates/admin.html:9
+msgid "Сховати архівовані заявки"
+msgstr "Скрыть архивированные заявки"
+
+#: frontend/app/templates/admin.html:10
+msgid "Показати архівовані заявки"
+msgstr "Показать архивированные заявки"
+
+#: frontend/app/templates/admin.html:19
+msgid "Ім'я:"
+msgstr "Имя:"
+
+#: frontend/app/templates/admin.html:20
+msgid "Номер телефону:"
+msgstr "Номер телефона:"
+
+#: frontend/app/templates/admin.html:22
+msgid "Посилання на вакансію"
+msgstr "Ссылка на вакансию"
+
+#: frontend/app/templates/admin.html:26
+msgid "Видалити"
+msgstr "Удалить"
+
+#: frontend/app/templates/admin.html:31
+msgid "Розархівувати"
+msgstr "Разархивировать"
+
+#: frontend/app/templates/admin.html:33
+msgid "Архівувати"
+msgstr "Архивировать"
+
+#: frontend/app/templates/base.html:45
+msgid "EUROPE SERVICE"
+msgstr "EUROPE SERVICE"
+
+#: frontend/app/templates/base.html:46
+msgid "Ліцензоване кадрове агенство"
+msgstr "Лицензированное кадровое агентство"
+
+#: frontend/app/templates/base.html:60
+msgid "Головна"
+msgstr "Главная"
+
+#: frontend/app/templates/base.html:62
+msgid "Відгуки"
+msgstr "Отзывы"
+
+#: frontend/app/templates/base.html:63
+msgid "Контакти"
+msgstr "Контакты"
+
+#: frontend/app/templates/base.html:64
+msgid "Адмін-панель"
+msgstr "Админ-панель"
+
+#: frontend/app/templates/index.html:8
+msgid "Добавити вакансію"
+msgstr "Добавить вакансию"
+
+#: frontend/app/templates/login.html:9
+msgid "Авторизація"
+msgstr "Авторизация"
+
+#: frontend/app/templates/login.html:12
+msgid "Логін"
+msgstr "Логин"
+
+#: frontend/app/templates/login.html:13
+msgid "Введіть логін"
+msgstr "Введите логин"
+
+#: frontend/app/templates/login.html:17
+msgid "Пароль"
+msgstr "Пароль"
+
+#: frontend/app/templates/login.html:18
+msgid "Введіть пароль"
+msgstr "Ваш пароль"
+
+#: frontend/app/templates/login.html:23
+msgid "Запам’ятати мене"
+msgstr "Запомнить меня"
+
+#: frontend/app/templates/login.html:26
+msgid "Увійти"
+msgstr "Войти"
+
+#: frontend/app/templates/vacancy-form.html:12
+msgid "Назва вакансії (UA)"
+msgstr "Название вакансии (UA)"
+
+#: frontend/app/templates/vacancy-form.html:19
+msgid "Напишіть назву вакансії українською"
+msgstr "Напишите название вакансии на украинском"
+
+#: frontend/app/templates/vacancy-form.html:25
+msgid "Назва вакансії (RU)"
+msgstr "Название вакансии (RU)"
+
+#: frontend/app/templates/vacancy-form.html:32
+msgid "Напишіть назву вакансії російською"
+msgstr "Напишите название вакансии на русском"
+
+#: frontend/app/templates/vacancy-form.html:38
+msgid "Головне зображення"
+msgstr "Основное изображение"
+
+#: frontend/app/templates/vacancy-form.html:51
+msgid "Додаткові фото"
+msgstr "Дополнительные фото"
+
+#: frontend/app/templates/vacancy-form.html:61
+msgid "Ви можете завантажити декілька фото"
+msgstr "Вы можете загрузить несколько фото"
+
+#: frontend/app/templates/vacancy-form.html:65
+msgid "Відео"
+msgstr "Видео"
+
+#: frontend/app/templates/vacancy-form.html:77
+msgid "Зарплата (UA)"
+msgstr "Зарплата (UA)"
+
+#: frontend/app/templates/vacancy-form.html:84
+msgid "Введіть зарплату українською"
+msgstr "Введите зарплату на украинском"
+
+#: frontend/app/templates/vacancy-form.html:90
+msgid "Зарплата (RU)"
+msgstr "Зарплата (RU)"
+
+#: frontend/app/templates/vacancy-form.html:97
+msgid "Введіть зарплату російською"
+msgstr "Введите зарплату на русском"
+
+#: frontend/app/templates/vacancy-form.html:102
+msgid "Графік (UA)"
+msgstr "График (UA)"
+
+#: frontend/app/templates/vacancy-form.html:109
+msgid "Введіть графік роботи українською"
+msgstr "Введите график работы на украинском"
+
+#: frontend/app/templates/vacancy-form.html:115
+msgid "Графік (RU)"
+msgstr "График (RU)"
+
+#: frontend/app/templates/vacancy-form.html:122
+msgid "Введіть графік роботи російською"
+msgstr "Введите график работы на русском"
+
+#: frontend/app/templates/vacancy-form.html:128
+msgid "Проживання (UA)"
+msgstr "Проживание (UA)"
+
+#: frontend/app/templates/vacancy-form.html:135
+msgid "Умови проживання українською"
+msgstr "Условия проживания на украинском"
+
+#: frontend/app/templates/vacancy-form.html:141
+msgid "Проживання (RU)"
+msgstr "Проживание (RU)"
+
+#: frontend/app/templates/vacancy-form.html:148
+msgid "Умови проживання російською"
+msgstr "Условия проживания на русском"
+
+#: frontend/app/templates/vacancy-form.html:154
+msgid "Місце роботи (UA)"
+msgstr "Место работы (UA)"
+
+#: frontend/app/templates/vacancy-form.html:161
+msgid "Вкажіть місце роботи українською"
+msgstr "Укажите место работы на украинском"
+
+#: frontend/app/templates/vacancy-form.html:167
+msgid "Місце роботи (RU)"
+msgstr "Место работы (RU)"
+
+#: frontend/app/templates/vacancy-form.html:174
+msgid "Вкажіть місце роботи російською"
+msgstr "Укажите место работы на русском"
+
+#: frontend/app/templates/vacancy-form.html:180
+msgid "Детальний опис (UA)"
+msgstr "Детальное описание (UA)"
+
+#: frontend/app/templates/vacancy-form.html:186
+msgid "Введіть детальний опис вакансії українською"
+msgstr "Введите детальное описание вакансии на украинском"
+
+#: frontend/app/templates/vacancy-form.html:192
+msgid "Детальний опис (RU)"
+msgstr "Детальное описание (RU)"
+
+#: frontend/app/templates/vacancy-form.html:198
+msgid "Введіть детальний опис вакансії російською"
+msgstr "Введите детальное описание вакансии на русском"
+
+#: frontend/app/templates/vacancy-form.html:204
+msgid "Створити вакансію"
+msgstr "Добавить вакансию"
+
+#: frontend/app/templates/vacancy-form.html:218
+msgid "Напишіть ваше повідомлення тут..."
+msgstr "Напишите ваше сообщение здесь..."
+
+#: frontend/app/templates/vacancy.html:9
+msgid "Повернутися до вакансій"
+msgstr "Вернуться к вакансиям"
+
+#: frontend/app/templates/vacancy.html:20
+msgid "Фото житла"
+msgstr "Фото жилья"
+
+#: frontend/app/templates/vacancy.html:21
+msgid ""
+"*(варіант житла на одному з заїздів під дану вакансію, фото отримано від "
+"клієнтів нашої компанії)"
+msgstr ""
+"*(вариант жилья на одном из заездов под данную вакансию, фото получены от"
+" клиентов нашей компании)"
+
+#: frontend/app/templates/vacancy.html:35
+msgid "Заявка на вакансію"
+msgstr "Заявка на вакансию"
+
+#: frontend/app/templates/vacancy.html:38
+msgid "Ваше ім’я"
+msgstr "Ваше имя"
+
+#: frontend/app/templates/vacancy.html:39
+msgid "Введіть ваше ім’я"
+msgstr "Введите ваше имя"
+
+#: frontend/app/templates/vacancy.html:42
+msgid "Ваш номер телефону"
+msgstr "Номер телефона:"
+
+#: frontend/app/templates/vacancy.html:43
+msgid "Введіть номер телефону"
+msgstr "Введите номер телефона:"
+
+#: frontend/app/templates/vacancy.html:45
+msgid "Надіслати заявку"
+msgstr "Отправить заявку"

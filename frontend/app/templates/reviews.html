@@ -1,7 +1,83 @@
 {% extends 'base.html' %}
 
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/reviews.min.css') }}">
+{% endblock %}
+
 {% block content %}
-
-
-
+<div class="reviews__title">Відгуки наших клієнтів</div>
+<div class="reviews-container">
+    <div class="review-card">
+        <h3>Сергій</h3>
+        <p>Дата заїзду: 08.03.2023</p>
+        <p>Місто: Варшава</p>
+        <p>Вакансія: <a href="#">Milka</a></p>
+        <p>
+            Хотів спробувати поїхати в Польщу звернувся в агенцію...
+        </p>
+        <div class="stars">
+            <span>★★★★★</span>
+        </div>
+    </div>
+    <div class="review-card">
+        <h3>Людмила</h3>
+        <p>Дата заїзду: 17.02.2023</p>
+        <p>Місто: Варшава</p>
+        <p>Вакансія: <a href="#">Gillette</a></p>
+        <p>
+            Їхала з подружкою від них на роботу в Польщу...
+        </p>
+        <div class="stars">
+            <span>★★★★★</span>
+        </div>
+    </div>
+    <div class="review-card">
+        <h3>Ivan</h3>
+        <p>Дата заїзду: 20.04.2023</p>
+        <p>Місто: Вроцлав</p>
+        <p>Вакансія: <a href="#">Amazon</a></p>
+        <p>
+            Выбор похожих кадровых агентств сейчас огромный...
+        </p>
+        <div class="stars">
+            <span>★★★★★</span>
+        </div>
+    </div>
+    <div class="review-card">
+        <h3>Мария</h3>
+        <p>Дата заїзду: 19.10.2021</p>
+        <p>Місто: Люблін</p>
+        <p>Вакансія: <a href="#">Робота в теплиці</a></p>
+        <p>
+            У меня уже была готовая сезонная виза...
+        </p>
+        <div class="stars">
+            <span>★★★★☆</span>
+        </div>
+    </div>
+    <div class="review-card">
+        <h3>Сергій</h3>
+        <p>Дата заїзду: 08.03.2023</p>
+        <p>Місто: Варшава</p>
+        <p>Вакансія: <a href="#">Milka</a></p>
+        <p>
+            Хотів спробувати поїхати в Польщу звернувся в агенцію...
+        </p>
+        <div class="stars">
+            <span>★★★★★</span>
+        </div>
+    </div>
+    <div class="review-card">
+        <h3>Людмила</h3>
+        <p>Дата заїзду: 17.02.2023</p>
+        <p>Місто: Варшава</p>
+        <p>Вакансія: <a href="#">Gillette</a></p>
+        <p>
+            Їхала з подружкою від них на роботу в Польщу...
+        </p>
+        <div class="stars">
+            <span>★★★★★</span>
+        </div>
+    </div>
+</div>
 {% endblock %}

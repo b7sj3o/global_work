@@ -1,121 +1,274 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block style %}
+<link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css" />
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/vacancy-form.min.css') }}" />
+{% endblock %} {% block content %}
 
-{% block style %}
-<link rel="stylesheet" href="https://cdn.quilljs.com/1.3.6/quill.snow.css">
-<link rel="stylesheet" href="{{ url_for('static', filename='CSS/vacancy-form.min.css') }}">
-{% endblock %}
-
-{% block content %}
-
-<form method="POST" enctype="multipart/form-data" class="container mt-4 p-4 border rounded bg-light">
-    {{ form.hidden_tag() }}
-
-    <div class="mb-3">
-        {{ form.title.label(class="form-label") }}
-        {{ form.title(class="form-control", size=32) }}
-    </div>
-    <div class="mb-3">
-        {{ form.title_ru.label(class="form-label") }}
-        {{ form.title_ru(class="form-control", size=32) }}
-    </div>
-
-    <div class="mb-3">
-        {{ form.main_image_path.label(class="form-label") }}
-        {{ form.main_image_path(class="form-control", accept=".jpg,.jpeg,.png", id="mainImageInput") }}
-        <div id="mainImagePreview" class="preview-container"></div>
+<form
+    method="POST"
+    enctype="multipart/form-data"
+    class="container mt-4 p-4 border rounded bg-light"
+>
+    <div class="form-group mb-3">
+        <label for="title">{{ _('Назва вакансії (UA)') }}</label>
+        <input
+            type="text"
+            id="title"
+            name="title"
+            class="form-control"
+            size="32"
+            placeholder="{{ _('Напишіть назву вакансії українською') }}"
+            value="{% if vacancy %}{{ vacancy.title }}{% endif %}"
+            required
+        />
     </div>
 
-    <div class="mb-3">
-        {{ form.images_path.label(class="form-label") }}
-        {{ form.images_path(class="form-control", accept=".jpg,.jpeg,.png", multiple=True, id="additionalImagesInput") }}
-        <div id="additionalImagesPreview" class="preview-container"></div>
-        <small class="form-text text-muted">You can upload multiple images.</small>
+    <div class="form-group mb-3">
+        <label for="title_ru" class="form-label">{{ _('Назва вакансії (RU)') }}</label>
+        <input
+            type="text"
+            id="title_ru"
+            name="title_ru"
+            class="form-control"
+            size="32"
+            placeholder="{{ _('Напишіть назву вакансії російською') }}"
+            value="{% if vacancy %}{{ vacancy.title_ru }}{% endif %}"
+            required
+        />
     </div>
 
-    <div class="mb-3">
-        {{ form.video_path.label(class="form-label") }}
-        {{ form.video_path(class="form-control", accept=".mp4,.avi,.mkv", id="videoInput") }}
-        <div id="videoPreview" class="preview-container"></div>
+    <div class="form-group mb-3">
+        <label for="main_image_path" class="form-label">{{ _('Головне зображення') }}</label>
+        <input
+            type="file"
+            id="mainImageInput"
+            name="main_image_path"
+            class="form-control"
+            accept=".jpg,.jpeg,.png"
+            {% if not vacancy %}required{% endif %}
+        />
+        <div id="mainImagePreview" class="preview-container">
+            {%if vacancy %}
+            <div class="preview-item">
+                    <img src="{{ vacancy.main_image_path }}" class="preview-image" />
+                    <!-- <button type="button" class="preview-remove">&times;</button> -->
+            </div>
+            {% endif %}
+        </div>
     </div>
 
-    <div class="mb-3">
-        {{ form.salary.label(class="form-label") }}
-        {{ form.salary(class="form-control", size=32) }}
-    </div>
-    <div class="mb-3">
-        {{ form.salary_ru.label(class="form-label") }}
-        {{ form.salary_ru(class="form-control", size=32) }}
-    </div>
-
-    <div class="mb-3">
-        {{ form.schedule.label(class="form-label") }}
-        {{ form.schedule(class="form-control", size=32) }}
-    </div>
-    <div class="mb-3">
-        {{ form.schedule_ru.label(class="form-label") }}
-        {{ form.schedule_ru(class="form-control", size=32) }}
-    </div>
-
-    <div class="mb-3">
-        {{ form.accommodation.label(class="form-label") }}
-        {{ form.accommodation(class="form-control", size=32) }}
-    </div>
-    <div class="mb-3">
-        {{ form.accommodation_ru.label(class="form-label") }}
-        {{ form.accommodation_ru(class="form-control", size=32) }}
+    <div class="form-group mb-3">
+        <label for="images_path" class="form-label">{{ _('Додаткові фото') }}</label>
+        <input
+            type="file"
+            id="additionalImagesInput"
+            name="images_path"
+            class="form-control"
+            accept=".jpg,.jpeg,.png"
+            multiple
+        />
+        <div id="additionalImagesPreview" class="preview-container">
+            {%if vacancy %}
+                {% for path in vacancy.images_path %}
+                    <div class="preview-item">
+                        <img src="{{ path }}" class="preview-image" />
+                        <!-- <button type="button" class="preview-remove">&times;</button> -->
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <small class="form-text text-muted">{{ _('Ви можете завантажити декілька фото') }}</small>
     </div>
 
-    <div class="mb-3">
-        {{ form.work_location.label(class="form-label") }}
-        {{ form.work_location(class="form-control", size=32) }}
-    </div>
-    <div class="mb-3">
-        {{ form.work_location_ru.label(class="form-label") }}
-        {{ form.work_location_ru(class="form-control", size=32) }}
+    <div class="form-group mb-3">
+        <label for="video_path" class="form-label">{{ _('Відео') }}</label>
+        <input
+            type="file"
+            id="videoInput"
+            name="video_path"
+            class="form-control"
+            accept=".mp4,.avi,.mkv"
+        />
+        <div id="videoPreview" class="preview-container">
+            {% if vacancy and vacancy.video_path %}
+            <div class="preview-item-video">
+                <video class="preview-video" controls>
+                    <source src="{{ vacancy.video_path }}"></source>
+                </video>
+                <!-- <button type="button" class="preview-remove">&times;</button> -->
+            </div>
+            {% endif %}
+        </div>
     </div>
 
-    <div class="mb-3">
-        {{ form.description.label(class="form-label") }}
-        <div id="description" style="height: 200px;"></div>
-        {{ form.description(class="form-control", rows=5, id="description_field", style="opacity: 0; height: 1px;") }}
+    <div class="form-group mb-3">
+        <label for="salary" class="form-label">{{ _('Зарплата (UA)') }}</label>
+        <input
+            type="text"
+            id="salary"
+            name="salary"
+            class="form-control"
+            size="32"
+            placeholder="{{ _('Введіть зарплату українською') }}"
+            value="{% if vacancy %}{{ vacancy.salary }}{% endif %}"
+            required
+        />
     </div>
 
-    <div class="mb-3">
-        {{ form.description_ru.label(class="form-label") }}
-        <div id="description_ru" style="height: 200px;"></div>
-        {{ form.description_ru(class="form-control", rows=5, id="description_ru_field", style="opacity: 0; height: 1px;") }}
+    <div class="form-group mb-3">
+        <label for="salary_ru" class="form-label">{{ _('Зарплата (RU)') }}</label>
+        <input
+            type="text"
+            id="salary_ru"
+            name="salary_ru"
+            class="form-control"
+            size="32"
+            value="{% if vacancy %}{{ vacancy.salary_ru }}{% endif %}"
+            placeholder="{{ _('Введіть зарплату російською') }}"
+        />
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="schedule" class="form-label">{{ _('Графік (UA)') }}</label>
+        <input
+            type="text"
+            id="schedule"
+            name="schedule"
+            class="form-control"
+            size="32"
+            placeholder="{{ _('Введіть графік роботи українською') }}"
+            value="{% if vacancy %}{{ vacancy.schedule }}{% endif %}"
+            required
+        />
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="schedule_ru" class="form-label">{{ _('Графік (RU)') }}</label>
+        <input
+            type="text"
+            id="schedule_ru"
+            name="schedule_ru"
+            class="form-control"
+            size="32"
+            placeholder="{{ _('Введіть графік роботи російською') }}"
+            value="{% if vacancy %}{{ vacancy.schedule_ru }}{% endif %}"
+            required
+        />
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="accommodation" class="form-label">{{ _('Проживання (UA)') }}</label>
+        <input
+            type="text"
+            id="accommodation"
+            name="accommodation"
+            class="form-control"
+            size="32"
+            placeholder="{{ _('Умови проживання українською') }}"
+            value="{% if vacancy %}{{ vacancy.accommodation }}{% endif %}"
+            required
+        />
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="accommodation_ru" class="form-label">{{ _('Проживання (RU)') }}</label>
+        <input
+            type="text"
+            id="accommodation_ru"
+            name="accommodation_ru"
+            class="form-control"
+            size="32"
+            placeholder="{{ _('Умови проживання російською') }}"
+            value="{% if vacancy %}{{ vacancy.accommodation_ru }}{% endif %}"
+            required
+        />
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="work_location" class="form-label">{{ _('Місце роботи (UA)') }}</label>
+        <input
+            type="text"
+            id="work_location"
+            name="work_location"
+            class="form-control"
+            size="32"
+            placeholder="{{ _('Вкажіть місце роботи українською') }}"
+            value="{% if vacancy %}{{ vacancy.work_location }}{% endif %}"
+            required
+        />
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="work_location_ru" class="form-label">{{ _('Місце роботи (RU)') }}</label>
+        <input
+            type="text"
+            id="work_location_ru"
+            name="work_location_ru"
+            class="form-control"
+            size="32"
+            placeholder="{{ _('Вкажіть місце роботи російською') }}"
+            value="{% if vacancy %}{{ vacancy.work_location_ru }}{% endif %}"
+            required
+        />
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="description" class="form-label">{{ _('Детальний опис (UA)') }}</label>
+        <div id="description" style="height: 200px">
+            {% if vacancy %}{{ vacancy.description | safe }}{% endif %}
+        </div>
+        <input
+            type="hidden"
+            id="description_field"
+            name="description"
+            placeholder="{{ _('Введіть детальний опис вакансії українською') }}"
+            required
+        />
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="description_ru" class="form-label">{{ _('Детальний опис (RU)') }}</label>
+        <div id="description_ru" style="height: 200px">
+            {% if vacancy %}{{ vacancy.description_ru | safe }}{% endif %}
+        </div>
+        <input
+            type="hidden"
+            id="description_ru_field"
+            name="description_ru"
+            placeholder="{{ _('Введіть детальний опис вакансії російською') }}"
+            required
+        />
     </div>
 
     <div class="d-grid">
-        {{ form.submit(class="btn btn-primary") }}
+        <button type="submit" class="btn btn-primary">
+            {% if vacancy %}{{ _('Оновити вакансію') }}{% else %}{{ _('Створити вакансію') }}{% endif %} 
+        </button>
     </div>
 </form>
 
-{% endblock %}
-
-{% block script %}
+{% endblock %} {% block script %}
 <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 <script>
     const editors = [
-        { quillId: '#description', fieldId: '#description_field' },
-        { quillId: '#description_ru', fieldId: '#description_ru_field' },
+        { quillId: "#description", fieldId: "#description_field" },
+        { quillId: "#description_ru", fieldId: "#description_ru_field" },
     ];
-    editors.forEach(editor => {
+    editors.forEach((editor) => {
         const quill = new Quill(editor.quillId, {
-            theme: 'snow',
-            placeholder: 'Напишіть ваше повідомлення тут...',
+            theme: "snow",
+            placeholder: '{{ _("Напишіть ваше повідомлення тут...") }}',
             modules: {
                 toolbar: [
-                    [{ 'header': [1, 2, false] }],
-                    ['bold', 'italic', 'underline'],
-                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-                    ['link'],
-                    ['clean']
-                ]
-            }
+                    [{ header: [1, 2, false] }],
+                    ["bold", "italic", "underline"],
+                    [{ list: "ordered" }, { list: "bullet" }],
+                    ["link"],
+                    ["clean"],
+                ],
+            },
         });
 
-        document.querySelector('form').addEventListener('click', function () {
+        document.querySelector("form").addEventListener("click", function () {
             const content = document.querySelector(editor.quillId).children[0].innerHTML;
             document.querySelector(editor.fieldId).value = content;
         });

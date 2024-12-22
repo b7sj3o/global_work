@@ -23,7 +23,7 @@ class VacancyData(BaseModel):
     description_ru: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 
@@ -33,7 +33,7 @@ class VacandyRequestData(BaseModel):
     phone_number: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class AdminCredentials(BaseModel):

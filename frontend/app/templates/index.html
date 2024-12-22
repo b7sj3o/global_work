@@ -5,20 +5,35 @@
 {% endblock %}
 
 {% block content %}
-<a class="btn btn-primary" href="{{ url_for('vacancy.create_vacancy' ) }}">Добавити вакансію</a>
+
 
 <div class="vacancies">
     {% for vacancy in vacancies %}
         <div class="vacancy-card">
             <img src="{{ vacancy.main_image_path }}" class="vacancy-image" />
+            {% if lang == "uk" %}
             <div class="vacancy-content">
                 <h2 class="vacancy-content__title"><b>{{ vacancy.title }}</b></h2>
-                <div class="vacancy-content__details">{{ vacancy.short_description | safe }}</div>
+                <ul class="vacancy-content__details">
+                    <li class="vacancy-content__item"><strong>Зарплата: </strong>{{ vacancy.salary }}</li>
+                    <li class="vacancy-content__item"><strong>Графік: </strong>{{ vacancy.schedule }}</li>
+                    <li class="vacancy-content__item"><strong>Житло: </strong>{{ vacancy.accommodation }}</li>
+                    <li class="vacancy-content__item"><strong>Місце роботи: </strong>{{ vacancy.work_location }}</li>
+                </ul>
                 <a href="{{ url_for('vacancy.get_vacancy', vacancy_id=vacancy.id ) }}" class="vacancy-content__button">Дізнатися більше</a>
             </div>
-            <form action="{{ url_for('vacancy.delete_vacancy', vacancy_id=vacancy.id) }}" method="POST">
-                <button type="submit" class="vacancy-card__delete-button">Видалити</button>
-            </form>
+            {% else %}
+            <div class="vacancy-content">
+                <h2 class="vacancy-content__title"><b>{{ vacancy.title_ru }}</b></h2>
+                <ul class="vacancy-content__details">
+                    <li class="vacancy-content__item"><strong>Зарплата: </strong>{{ vacancy.salary_ru }}</li>
+                    <li class="vacancy-content__item"><strong>Графік: </strong>{{ vacancy.schedule_ru }}</li>
+                    <li class="vacancy-content__item"><strong>Житло: </strong>{{ vacancy.accommodation_ru }}</li>
+                    <li class="vacancy-content__item"><strong>Місце роботи: </strong>{{ vacancy.work_location_ru }}</li>
+                </ul>
+                <a href="{{ url_for('vacancy.get_vacancy', vacancy_id=vacancy.id ) }}" class="vacancy-content__button">Дізнатися більше</a>
+            </div>
+            {% endif %}
         </div>
     {% endfor %}
 </div>

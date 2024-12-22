@@ -1,17 +1,25 @@
-.PHONY: run-backend
+.PHONY: run-backend run-frontend run install t_extract t_update t_extract_update t_compile
 run-backend:
 	python backend/app.py
 
-.PHONY: run-frontend
 run-frontend:
 	python frontend/app.py
 
-.PHONY: run
 run:
 	python run.py
 
-.PHONY: install
 install:
 	pip install -r requirements.txt
 
 
+t_extract:
+	pybabel extract -F babel.cfg -o messages.pot .
+
+t_update:
+	pybabel update -i messages.pot -d translations
+
+t_extract_update:
+	t_extract; t_update
+
+t_compile:
+	pybabel compile -d translations

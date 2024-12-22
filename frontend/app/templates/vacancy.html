@@ -1,19 +1,26 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
 
 {% block style %}
 <link rel="stylesheet" href="{{ url_for('static', filename='CSS/vacancy.min.css') }}">
 {% endblock %}
 
+{% block content %}
+
 <div class="vacancy">
     <div class="vacancy-details">
-        <a href="{{ url_for('base.home' ) }}" class="vacancy-back">← Повернутися до вакансій</a>
+        <a href="{{ url_for('base.home' ) }}" class="vacancy-back">← {{ _('Повернутися до вакансій') }}</a>
         <div class="vacancy-image"><img src="{{vacancy.main_image_path}}" alt=""></div>
+        {% if lang == "uk" %}
         <div class="vacancy-title">{{ vacancy.title }}</div>
         <div class="vacancy-description">{{ vacancy.description | safe }}</div>
+        {% else %}
+        <div class="vacancy-title">{{ vacancy.title_ru }}</div>
+        <div class="vacancy-description">{{ vacancy.description_ru | safe }}</div>
+        {% endif %}
 
         <hr>
-        <h3>Фото житла</h3>
-        <p>*(варіант житла на одному з заїздів під дану вакансію, фото отримано від клієнтів нашої компанії)</p>
+        <h3>{{ _('Фото житла') }}</h3>
+        <p>{{ _('*(варіант житла на одному з заїздів під дану вакансію, фото отримано від клієнтів нашої компанії)') }}</p>
         <div class="vacancy-images">
             {% for img_path in vacancy.images_path %}
                 <img src="{{ img_path }}" alt="">
@@ -26,21 +33,38 @@
         </div>
         {% endif %}
     </div>
-    <div class="vacancy-form">
-        <h4>Заявка на вакансію</h4>
-        <form method="post">
-            {{ form.hidden_tag() }}
-            <div class="form-group">
-                {{ form.name.label() }}
-                {{ form.name(class="form-control") }}
+    
+    <div class="vacancy-forms">
+        <div class="vacancy-form">
+            <h4>{{ _('Заявка на вакансію') }}</h4>
+            <form method="post">
+                <div class="form-group">
+                    <label for="name">{{ _('Ваше ім’я') }}</label>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="{{ _('Введіть ваше ім’я') }}" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone_number">{{ _('Ваш номер телефону') }}</label>
+                    <input type="tel" id="phone_number" name="phone_number" class="form-control" placeholder="{{ _('Введіть номер телефону') }}" required>
+                </div>
+                <button type="submit" class="btn btn-success">{{ _('Надіслати заявку') }}</button>
+            </form>
+        </div>
+        
+        {% if session.get('authorized') %}
+            <div class="vacancy-admin-forms">
+                <form action="{{ url_for('vacancy.update_vacancy', vacancy_id=vacancy.id) }}" class="vacancy-form-special" method="GET">
+                    <button type="submit" class="vacancy-card__update-button">Редагувати</button>
+                </form>
+                <form action="{{ url_for('vacancy.delete_vacancy', vacancy_id=vacancy.id) }}" class="vacancy-form-special" method="POST">
+                    <button type="submit" class="vacancy-card__delete-button">Видалити</button>
+                </form>
             </div>
-            <div class="form-group">
-                {{ form.phone_number.label() }}
-                {{ form.phone_number(class="form-control") }}
-            </div>
-            {{ form.submit(class="btn btn-success") }}
-        </form>
+        {% endif %}
     </div>
+
+    
+    
 </div>
+
 
 {% endblock %}

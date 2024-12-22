@@ -1,3 +1,4 @@
+from datetime import timedelta
 import requests
 from flask import (
     flash,
@@ -9,10 +10,8 @@ from flask import (
     current_app,
     session,
 )
+from flask_babel import _
 from ..utils import create_blueprint
-from ..forms import LoginForm
-
-# from config import Config
 import json
 
 base_bp = create_blueprint(name="base", url_prefix="/")
@@ -20,10 +19,11 @@ base_bp = create_blueprint(name="base", url_prefix="/")
 
 @base_bp.route("/")
 def home():
-    response = requests.get(f"{current_app.config['VACANCY_ENDPOINT']}/list")
-    data = json.loads(response.text)
+    vacancies = requests.get(f"{current_app.config['VACANCY_ENDPOINT']}/list").json()
 
-    return render_template("index.html", vacancies=data)
+    lang = request.cookies.get("language", "uk")
+
+    return render_template("index.html", vacancies=vacancies, lang=lang)
 
 
 @base_bp.route("/about_us")
@@ -41,30 +41,35 @@ def contacts():
 
 @base_bp.route("/login", methods=["GET", "POST"])
 def login():
-    if "authorized" in session:
-        flash("Ви вже зареєстровані", "success")
+    if session.get("authorized"):
+        flash(_("Ви вже зареєстровані"), "success")
         return redirect(url_for("base.home"))
 
-    form = LoginForm()
     if request.method == "POST":
-        if form.validate_on_submit():
-            data = {"username": form.username.data, "password": form.password.data}
+        username = request.form.get("username")
+        password = request.form.get("password")
+        remember_me = "remember_me" in request.form
 
-            response = requests.get(
-                f"{current_app.config['ADMIN_ENDPOINT']}/login", json=data
-            )
-            response_data = response.json()
+        data = {"username": username, "password": password}
+        
+        response = requests.get(
+            f"{current_app.config['ADMIN_ENDPOINT']}/login", json=data
+        )
 
-            if response.status_code == 200:
-                # setting cookies
-                session["authorized"] = True
-
-                flash(response_data["message"], "success")
-                return redirect(url_for("admin.admin"))
+        if response.status_code == 200:
+            session["authorized"] = True
+            flash(_("Ви успішно ввійшли в акаунт!"), "success")
+            
+            # Set session lifetime
+            if remember_me:
+                session.permanent = True
+                current_app.permanent_session_lifetime = timedelta(days=32) 
             else:
-                flash(response_data.get("detail", "Помилка"), "danger")
+                session.permanent = False # expire if you close the browser
+                current_app.permanent_session_lifetime = timedelta(days=1) 
 
+            return redirect(url_for("admin.admin"))
         else:
-            flash("Форма містить помилки. Перевірте введені дані.", "danger")
+            flash(_("Трапилася помилка!"), "danger")
 
-    return render_template("login.html", form=form)
+    return render_template("login.html")

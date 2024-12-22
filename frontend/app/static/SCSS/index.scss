@@ -2,28 +2,27 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    margin-top: 50px;
 }
 
 .vacancy-card {
-    display: flex; /* Забезпечує вирівнювання по висоті */
+    display: flex;
     flex-direction: column;
-    width: 30%;
+    flex: 0 1 calc(33.333% - 20px);
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     background-color: #fff;
     overflow: hidden;
-    margin: 20px auto;
 
     .vacancy-image {
         width: 100%;
-        height: 40%;
+        height: 200px;
         object-fit: cover;
     }
 
     .vacancy-content {
         display: flex;
         flex-direction: column;
-        flex-grow: 1; /* Розширює блок на всю висоту */
         padding: 20px;
 
         &__title {
@@ -33,7 +32,6 @@
         }
 
         &__details {
-            flex-grow: 1; /* Заповнює простір між title та button */
             margin-bottom: 15px;
         }
 
@@ -52,25 +50,6 @@
 
             &:hover {
                 background-color: #008f43;
-            }
-        }
-    }
-
-    form {
-        margin: 0;
-        padding: 10px;
-        text-align: center;
-
-        .vacancy-card__delete-button {
-            background: none;
-            border: none;
-            color: #d9534f;
-            cursor: pointer;
-            font-size: 14px;
-            transition: color 0.3s ease;
-
-            &:hover {
-                color: #c9302c;
             }
         }
     }

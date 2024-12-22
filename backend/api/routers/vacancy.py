@@ -39,14 +39,17 @@ def create_vacancy(vacancy_data: VacancyData):
 @router.put("/update/{vacancy_id}")
 def update_vacancy(vacancy_id: int, vacancy_data: VacancyData):
     with Session() as session:
+        print(1)
         vacancy = session.query(Vacancy).filter_by(id=vacancy_id).first()
-
+        print(2)
         if not vacancy:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Vacancy is not found")
+        print(3)
 
         data_to_update = vacancy_data.model_dump(exclude_unset=True)
         for k, v in data_to_update.items():
             setattr(vacancy, k, v)
+        print(4)
 
         session.add(vacancy)
         session.commit()

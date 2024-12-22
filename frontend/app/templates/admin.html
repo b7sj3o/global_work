@@ -2,35 +2,40 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='CSS/admin.min.css') }}" />
 {% endblock %} {% block content %}
 
-<div class="toggle-archieved">
+<div class="admin-buttons">
     <form method="GET" action="{{ url_for('admin.admin') }}">
         <input type="hidden" name="show_archieved" value="{{ not show_archieved }}" />
         <button type="submit" class="toggle-button">
-            {% if show_archieved %} Сховати архівовані заявки 
-            {% else %} Показати архівовані заявки
+            {% if show_archieved %} {{ _("Сховати архівовані заявки") }}
+            {% else %} {{ _("Показати архівовані заявки") }}
             {% endif %}
         </button>
     </form>
+
+    <a class="btn btn-primary" href="{{ url_for('vacancy.create_vacancy' ) }}"> {{ _("Добавити вакансію") }} </a>
 </div>
+
 
 <div class="requests">
     {% for request in vacancy_requests %}
     <div class="request {% if request.archieved %}archived{% endif %}">
-        <div class="request__name">Ім'я: {{ request.name }}</div>
-        <div class="request__phone-number">Номер телефону: {{ request.phone_number }}</div>
+        <div class="request__name">{{ _('Ім\'я:') }} {{ request.name }}</div>
+        <div class="request__phone-number">{{ _('Номер телефону:') }} {{ request.phone_number }}</div>
+        <div class="request__created-date">{{ _('Дата створення:') }} {{ request.created_at }}</div>
+
         <div class="request__link">
-            <a href="{{ url_for('vacancy.get_vacancy', vacancy_id=request.vacancy_id ) }}">Посилання на вакансію</a>
+            <a href="{{ url_for('vacancy.get_vacancy', vacancy_id=request.vacancy_id ) }}">{{ _('Посилання на вакансію') }}</a>
         </div>
         <div class="request__actions">
             <form method="POST" action="{{ url_for('vacancy.delete_request', request_id=request.id) }}">
-                <button type="submit" class="request__delete-button">Видалити</button>
+                <button type="submit" class="request__delete-button">{{ _('Видалити') }}</button>
             </form>
             <form method="POST" action="{{ url_for('vacancy.archieve_request', request_id=request.id) }}">
                 <button type="submit" class="request__archieve-button">
                     {% if request.archieved %}
-                        Розархівувати
+                        {{ _('Розархівувати') }}
                     {% else %}
-                        Архівувати
+                        {{ _('Архівувати') }}
                     {% endif %}
                 </button>
             </form>

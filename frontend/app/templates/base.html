@@ -37,30 +37,35 @@
 
             <header class="header container">
                 <div class="header__logo">
-                    <img
+                    <a href="{{ url_for('base.home' ) }}">
+                        <img
                         src="{{ url_for('static', filename='img/logo.svg') }}"
                         alt="Europe Service Logo"
-                    />
+                        />
+                    </a>
                     <div class="header__text">
-                        <h1 class="header__text-title">EUROPE SERVICE</h1>
-                        <p class="header__text-subtitle">Ліцензоване кадрове агенство</p>
+                        <h1 class="header__text-title"> {{ _("EUROPE SERVICE") }} </h1>
+                        <p class="header__text-subtitle"> {{ _("Ліцензоване кадрове агенство") }} </p>
                     </div>
                 </div>
                 <div class="header__lang-switch">
-                    <div class="header__lang-btn active">UA</div>
-                    <div class="header__lang-btn">RU</div>
+                    <div class="header__lang-btn" data-lang="uk">UA</div>
+                    <div class="header__lang-btn" data-lang="ru">RU</div>
                 </div>
+                
                 <div class="header__contacts">
                     <a href="tel:+380633339078" class="header__phone">+380633339078</a>
                 </div>
             </header>
             <nav class="menu container">
                 <ul class="menu__list">
-                    <li class="menu__item"><a href="{{ url_for('base.home' ) }}">Головна</a></li>
-                    <li class="menu__item"><a href="{{ url_for('base.about_us' ) }}">Про нас</a></li>
-                    <li class="menu__item"><a href="{{ url_for('base.reviews' ) }}">Відгуки</a></li>
-                    <li class="menu__item"><a href="{{ url_for('base.contacts' ) }}">Контакти</a></li>
-                    <li class="menu__item"><a href="{{ url_for('admin.admin' ) }}">Адмін-панель</a></li>
+                    <li class="menu__item"><a href="{{ url_for('base.home' ) }}">{{ _("Головна") }}</a></li>
+                    <li class="menu__item"><a href="{{ url_for('base.about_us' ) }}">{{ _("Про нас") }}</a></li>
+                    <li class="menu__item"><a href="{{ url_for('base.reviews' ) }}"> {{ _("Відгуки") }} </a></li>
+                    <li class="menu__item"><a href="{{ url_for('base.contacts' ) }}"> {{ _("Контакти") }} </a></li>
+                    {% if session.get('authorized') %}
+                        <li class="menu__item"><a href="{{ url_for('admin.admin' ) }}"> {{ _("Адмін-панель") }} </a></li>
+                    {% endif %}
                 </ul>
             </nav>
             <main class="main container">
@@ -72,6 +77,7 @@
         </div>
 
         <script src="{{ url_for('static', filename='JS/removeModals.js') }}"></script>
+        <script src="{{ url_for('static', filename='JS/lang.js') }}"></script>
         
         {% block script %}{% endblock %}
     </body>

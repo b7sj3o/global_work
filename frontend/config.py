@@ -14,6 +14,10 @@ class Config:
 	VACANCY_ENDPOINT = f"{API_URL}/vacancy"
 	VACANCY_REQUEST_ENDPOINT = f"{API_URL}/vacancy-request"
 
+	BABEL_TRANSLATION_DIRECTORIES = "C:/Users/admin/Desktop/Projects/CLIENTS/czech_job_applications/translations"
+	BABEL_DEFAULT_LOCALE = "uk"
+	BABEL_SUPPORTED_LOCALES = ["uk", "ru"]
+
 	IMAGES_SAVE = "images"
 	VIDEOS_SAVE = "videos"
 	UPLOADS_FOLDER_ABSOLUTE = "frontend/app/uploads"

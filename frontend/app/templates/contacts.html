@@ -1,7 +1,74 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/contacts.min.css') }}" />
+{% endblock %} {% block content %}
 
-{% block content %}
+<div class="contact-us">
+    <div class="contact-us__texts">
+        <h1 class="contact-us__title">Наші контакти</h1>
+        <h2 class="contact-us__subtitle">Потрібна допомога? Пишіть, допоможемо!</h2>
 
+        <div class="contact-us__phone">
+            <img src="{{ url_for('static', filename='img/telephone.svg') }}" alt="" />
+            <span>+380 12 345 6789</span>
+        </div>
 
+        <div class="contact-us__icons">
+            <a href="https://telegram.org" target="_blank">
+                <img src="{{ url_for('static', filename='img/telegram.svg') }}" alt="" />
+            </a>
+            <a href="https://web.whatsapp.com" target="_blank">
+                <img src="{{ url_for('static', filename='img/whatsapp.svg') }}" alt="" />
+            </a>
+            <a href="https://www.viber.com" target="_blank">
+                <img src="{{ url_for('static', filename='img/viber.svg') }}" alt="" />
+            </a>
+        </div>
+    </div>
+    
+    <form method="POST" class="contact-us__form">
+        <h1 class="contact-us__form-title text-center mb-4">Зв'яжіться з нами</h1>
+    
+        <div class="form-group">
+            <label for="name" class="form-label">Ваше ім'я</label>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-control"
+                placeholder="Введіть ваше ім'я"
+                required
+            />
+        </div>
+    
+        <div class="form-group">
+            <label for="phone" class="form-label">Ваш номер телефону</label>
+            <input
+                type="tel"
+                id="phone"
+                name="phone"
+                class="form-control"
+                placeholder="Введіть ваш номер телефону"
+                required
+            />
+        </div>
+    
+        <div class="form-group">
+            <label for="message" class="form-label">Ваше повідомлення</label>
+            <textarea
+                id="message"
+                name="message"
+                class="form-control"
+                rows="5"
+                placeholder="Введіть ваше повідомлення"
+                required
+            ></textarea>
+        </div>
+    
+        <div class="text-center mt-3">
+            <button type="submit" class="btn btn-primary">Відправити</button>
+        </div>
+    </form>
+    
+</div>
 
 {% endblock %}

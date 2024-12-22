@@ -1,26 +1,29 @@
-{% extends 'base.html' %} {% block style %}
-<link rel="stylesheet" href="{{ url_for('static', filename='CSS/login.min.css') }}" />
-{% endblock %} {% block content %}
+{% extends 'base.html' %}
 
-<h1>Admin Login</h1>
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/login.min.css') }}" />
+{% endblock %}
+
+{% block content %}
+
+<h1>{{ _("Авторизація") }}</h1>
 <form method="POST">
-    {{ form.hidden_tag() }}
     <div class="form-group">
-        {{ form.username.label(class="form-label") }} {{ form.username(class="form-control",
-        size=32) }}
+        <label for="username" class="form-label">{{ _("Логін") }}</label>
+        <input type="text" id="username" name="username" class="form-control" size="32" placeholder="{{ _('Введіть логін') }}" required>
     </div>
     <br />
     <div class="form-group">
-        {{ form.password.label(class="form-label") }} 
-        {{ form.password(class="form-control", size=32) }}
+        <label for="password" class="form-label">{{ _("Пароль") }}</label>
+        <input type="password" id="password" name="password" class="form-control" size="32" placeholder="{{ _('Введіть пароль') }}" required>
     </div>
     <br />
     <div class="form-check">
-        {{ form.remember_me.label(class="form-check-label") }} 
-        {{ form.remember_me(class="form-check-input", size=32) }}
+        <input type="checkbox" id="remember_me" name="remember_me" class="form-check-input">
+        <label for="remember_me" class="form-check-label">{{ _("Запам’ятати мене") }}</label>
     </div>
     <br />
-    {{ form.submit(class="btn btn-primary") }}
+    <button type="submit" class="btn btn-primary">{{ _("Увійти") }}</button>
 </form>
 
 {% endblock %}
