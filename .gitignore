@@ -170,3 +170,4 @@ cython_debug/
 #.idea/
 
 frontend/app/uploads/*
+.vercel
